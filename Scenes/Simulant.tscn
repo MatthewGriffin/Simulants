@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bhubw1bbqlmcj" path="res://Models/Simulants/dummy_scene.tscn" id="1_e7qyq"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2t65i"]
-radius = 0.25
+radius = 0.3
 
 [node name="Simulant" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 3.49691e-07, 0, 1, 0, -3.49691e-07, 0, 1, 0, 0, 0)
@@ -23,7 +23,7 @@ spring_length = 3.0
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_desired_distance = 0.1
 target_desired_distance = 0.1
-path_height_offset = 0.5
+path_height_offset = 0.45
 avoidance_enabled = true
 debug_enabled = true
 

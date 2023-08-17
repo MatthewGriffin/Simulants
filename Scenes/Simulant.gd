@@ -6,7 +6,6 @@ const JUMP_VELOCITY = 4.5
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var GRAVITY = ProjectSettings.get_setting("physics/3d/default_gravity")
 
-@onready var coll = $CollisionShape3D
 @onready var dummyMesh = $dummy_scene/Armature/Skeleton3D/Cube
 @onready var AnimTree = $dummy_scene/AnimationTree
 @onready var StateMachine =  AnimTree["parameters/playback"]
@@ -37,14 +36,15 @@ func _process(delta):
 			ApplyRootMotion(delta)
 		#if point is to our side or behind
 		else:
+			var loc = to_local(nextPoint).normalized()
 			#convert nextpoint to be direction from simulant to figure out if its to its left or right
-			if to_local(nextPoint).normalized().x > 0 && angle > 270: 
+			if loc.x > 0 && angle > 270: 
 				StateMachine.travel("Turn_Right_45")
-			elif to_local(nextPoint).normalized().x > 0:
+			elif loc.x > 0:
 				StateMachine.travel("Turn_Right")
-			elif to_local(nextPoint).normalized().x < 0 && angle > 45: 
+			elif loc.x < 0 && angle > 45: 
 				StateMachine.travel("Turn_Left_45")
-			elif to_local(nextPoint).normalized().x < 0:
+			elif loc.x < 0:
 				StateMachine.travel("Turn_Left")
 			
 			ApplyRootMotion(delta)
@@ -59,7 +59,10 @@ func ApplyRootMotion(delta:float):
 	move_and_slide()
 
 func SmoothLookAt(target:Vector3):
-	global_transform = global_transform.interpolate_with(global_transform.looking_at(target), 0.1)
+	var lookat = global_transform.looking_at(target)
+	lookat.basis.z = global_transform.basis.z
+	lookat.basis.y = global_transform.basis.y
+	global_transform = global_transform.interpolate_with(lookat, 0.1)
 
 func SetAnimTreeParam(param:String, value):
 	AnimTree.set(param,value)

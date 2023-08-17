@@ -1,11 +1,12 @@
-MeshInstance3D
 Node3D
+CollisionShape3D
+StaticBody3D
+RigidBody3D
+MeshInstance3D
 DirectionalLight3D
 Camera3D
 SpringArm3D
 NavigationAgent3D
-CollisionShape3D
 AnimationTree
 CharacterBody3D
 NavigationRegion3D
-RigidBody3D

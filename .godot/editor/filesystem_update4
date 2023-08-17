@@ -2,9 +2,3 @@ res://Levels/Main.tscn
 res://Scenes/Simulant.tscn
 res://Models/Simulants/dummy_scene.tscn
 res://Scenes/Simulant.gd
-res://Animations/Simulants/Idle.res
-res://Animations/Simulants/SideStep_L.res
-res://Animations/Simulants/Turn_Left.res
-res://Animations/Simulants/Walk_Back.res
-res://Animations/Simulants/Walk_Forward.res
-res://Animations/Simulants/SimulantAnimLib.res
