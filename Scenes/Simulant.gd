@@ -17,7 +17,7 @@ func Setup(target):
 	NavAgent.target_position = target.global_position
 	Target = target
 
-func _physics_process(delta):
+func _process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= GRAVITY * delta
@@ -30,7 +30,7 @@ func _physics_process(delta):
 		var currentAnim = StateMachine.get_current_node()
 		
 		#if point is infront then walk 
-		if angle <= 90 || angle >= 270:
+		if angle <= 45 || angle >= 315:
 			StateMachine.travel("Walk")
 			SmoothLookAt(nextPoint)
 			SetAnimTreeParam("parameters/Walk/blend_position", Vector2(0,1))
@@ -38,10 +38,15 @@ func _physics_process(delta):
 		#if point is to our side or behind
 		else:
 			#convert nextpoint to be direction from simulant to figure out if its to its left or right
-			if to_local(nextPoint).normalized().x > 0:
+			if to_local(nextPoint).normalized().x > 0 && angle > 270: 
+				StateMachine.travel("Turn_Right_45")
+			elif to_local(nextPoint).normalized().x > 0:
 				StateMachine.travel("Turn_Right")
+			elif to_local(nextPoint).normalized().x < 0 && angle > 45: 
+				StateMachine.travel("Turn_Left_45")
 			elif to_local(nextPoint).normalized().x < 0:
 				StateMachine.travel("Turn_Left")
+			
 			ApplyRootMotion(delta)
 			SetAnimTreeParam("parameters/Walk/blend_position", Vector2(0,0))
 	else:
