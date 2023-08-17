@@ -2,3 +2,7 @@ res://Levels/Main.tscn
 res://Scenes/Simulant.tscn
 res://Models/Simulants/dummy_scene.tscn
 res://Scenes/Simulant.gd
+res://Animations/Simulants/Turn_Left.res
+res://Animations/Simulants/Turn_Left_45.res
+res://Animations/Simulants/Turn_Right.res
+res://Animations/Simulants/Turn_Right_45.res
