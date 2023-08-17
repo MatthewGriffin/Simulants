@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://ci07pg4q220of"]
+
+[ext_resource type="Script" path="res://Scenes/Simulant.gd" id="1_03rkn"]
+[ext_resource type="PackedScene" uid="uid://bhubw1bbqlmcj" path="res://Models/Simulants/dummy_scene.tscn" id="1_e7qyq"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2t65i"]
+radius = 0.25
+
+[node name="Simulant" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 3.49691e-07, 0, 1, 0, -3.49691e-07, 0, 1, 0, 0, 0)
+script = ExtResource("1_03rkn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_2t65i")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CollisionShape3D"]
+transform = Transform3D(-1, 8.74228e-08, -2.38843e-07, -4.37114e-08, 0.866025, 0.5, 2.50556e-07, 0.5, -0.866025, 0, 0.583878, 0)
+spring_length = 3.0
+
+[node name="Camera3D" type="Camera3D" parent="CollisionShape3D/SpringArm3D"]
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_desired_distance = 0.1
+target_desired_distance = 0.1
+path_height_offset = 0.5
+avoidance_enabled = true
+debug_enabled = true
+
+[node name="dummy_scene" parent="." instance=ExtResource("1_e7qyq")]
+transform = Transform3D(-0.3, 0, -7.86805e-08, 0, 0.3, 0, 7.86805e-08, 0, -0.3, 0, 0, 0)

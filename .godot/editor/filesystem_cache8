@@ -1,0 +1,13 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1692270377
+icon.svg::CompressedTexture2D::4430541459915620496::1692218033::1692218036::1::::<><>::
+::res://Levels/::1692228173
+Main.gd::GDScript::-1::1692224300::0::1::::<>Node3D<>::
+Main.tscn::PackedScene::6881678780722396854::1692228173::0::1::::<><>::res://Levels/Main.gd<>uid://ci07pg4q220of::::res://Scenes/Simulant.tscn
+::res://Models/::1692218121
+::res://Models/Simulants/::1692228173
+dummy.glb::PackedScene::298141968547115134::1692218133::1692225363::1::::<><>::
+dummy_scene.tscn::PackedScene::2919131515918368693::1692228173::0::1::::<><>::uid://eiomb8w1r08q::::res://Models/Simulants/dummy.glb
+::res://Scenes/::1692228252
+Simulant.gd::GDScript::-1::1692228172::0::1::::<>CharacterBody3D<>::
+Simulant.tscn::PackedScene::5387931651722623245::1692228252::0::1::::<><>::res://Scenes/Simulant.gd<>uid://bhubw1bbqlmcj::::res://Models/Simulants/dummy_scene.tscn

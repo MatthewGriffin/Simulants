@@ -1,0 +1,76 @@
+[gd_scene load_steps=14 format=3 uid="uid://bhubw1bbqlmcj"]
+
+[ext_resource type="PackedScene" uid="uid://eiomb8w1r08q" path="res://Models/Simulants/dummy.glb" id="1_507xh"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vm3p0"]
+animation = &"Turn_Left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_37xi4"]
+animation = &"Turn_Right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f2gkh"]
+animation = &"Walk_Forward"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_djqm4"]
+animation = &"Walk_Back"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_djuy7"]
+animation = &"SideStep_L"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hpivf"]
+animation = &"SideStep_R"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4hvo6"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_i8ycl"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_f2gkh")
+blend_point_0/pos = Vector2(0, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_djqm4")
+blend_point_1/pos = Vector2(0, -1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_djuy7")
+blend_point_2/pos = Vector2(-1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_hpivf")
+blend_point_3/pos = Vector2(1, 0)
+blend_point_4/node = SubResource("AnimationNodeAnimation_4hvo6")
+blend_point_4/pos = Vector2(0, 0)
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dbu4l"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0j2n5"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ja12y"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_qk64o"]
+states/Turn_Left/node = SubResource("AnimationNodeAnimation_vm3p0")
+states/Turn_Left/position = Vector2(293, 170)
+states/Turn_Right/node = SubResource("AnimationNodeAnimation_37xi4")
+states/Turn_Right/position = Vector2(435, 170)
+states/Walk/node = SubResource("AnimationNodeBlendSpace2D_i8ycl")
+states/Walk/position = Vector2(360, 100)
+transitions = ["Turn_Left", "Walk", SubResource("AnimationNodeStateMachineTransition_dbu4l"), "Turn_Right", "Walk", SubResource("AnimationNodeStateMachineTransition_0j2n5"), "Start", "Walk", SubResource("AnimationNodeStateMachineTransition_ja12y")]
+
+[node name="dummy" instance=ExtResource("1_507xh")]
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/1/position = Vector3(0, 0.874219, -4.09215e-10)
+bones/2/rotation = Quaternion(-0.134142, 0.125478, -0.973137, 0.138804)
+bones/3/rotation = Quaternion(-0.116707, -0.0117324, 0.00170482, 0.993096)
+bones/6/rotation = Quaternion(-0.161556, 0.089092, 0.976462, 0.111735)
+bones/7/rotation = Quaternion(-0.137219, 0.000863627, -0.0193252, 0.990352)
+bones/8/rotation = Quaternion(-0.00420401, -0.0914518, 0.995779, -0.00662498)
+bones/9/rotation = Quaternion(0.161854, -0.0130498, -0.00673749, 0.986705)
+bones/10/rotation = Quaternion(-0.00845755, -0.00854221, 0.999907, 0.0064614)
+bones/11/rotation = Quaternion(0.106545, 0.0214539, 0.0242356, 0.993781)
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="2"]
+tree_root = SubResource("AnimationNodeStateMachine_qk64o")
+anim_player = NodePath("../AnimationPlayer")
+active = true
+root_motion_track = NodePath("Armature/Skeleton3D:Root")
+parameters/Walk/blend_position = Vector2(0, 0)
