@@ -87,15 +87,15 @@ graph_offset = Vector2(-209, -43)
 [node name="dummy" instance=ExtResource("1_507xh")]
 
 [node name="Skeleton3D" parent="Armature" index="0"]
-bones/1/position = Vector3(3.05483e-05, 0.89165, -2.292e-08)
-bones/2/rotation = Quaternion(-0.118331, 0.0360549, -0.986861, 0.10394)
-bones/3/rotation = Quaternion(-0.0646071, -0.000826656, -0.00529204, 0.997896)
-bones/6/rotation = Quaternion(-0.181368, 0.0336428, 0.976724, 0.109469)
-bones/7/rotation = Quaternion(-0.0658669, 0.000302103, 0.0044171, 0.997819)
-bones/8/rotation = Quaternion(-0.00937684, -0.000518242, 0.99993, 0.00723891)
-bones/9/rotation = Quaternion(0.289768, 0.0232786, -0.0339431, 0.956212)
-bones/10/rotation = Quaternion(0.00865561, -0.0457178, 0.998849, -0.0116387)
-bones/11/rotation = Quaternion(0.0546168, -0.00100409, 0.0138102, 0.998411)
+bones/1/position = Vector3(3.05484e-05, 0.889953, -2.29299e-08)
+bones/2/rotation = Quaternion(-0.116689, -0.074493, -0.984496, 0.107712)
+bones/3/rotation = Quaternion(-0.064157, -0.000925174, -0.00545455, 0.997925)
+bones/6/rotation = Quaternion(-0.173912, -0.02543, 0.976603, 0.123914)
+bones/7/rotation = Quaternion(-0.0656114, 0.000363951, 0.00450853, 0.997835)
+bones/8/rotation = Quaternion(-0.00229615, -0.0776234, 0.996979, -0.00166509)
+bones/9/rotation = Quaternion(0.166193, 0.0105499, -0.0199061, 0.985836)
+bones/10/rotation = Quaternion(0.00126645, 0.0480554, 0.998844, 0.000665547)
+bones/11/rotation = Quaternion(0.0744068, -4.6685e-05, 0.011069, 0.997167)
 
 [node name="AnimationPlayer" parent="." index="1"]
 libraries = {

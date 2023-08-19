@@ -18,11 +18,22 @@ func Setup():
 
 func CreateNeedTimer(NeedToUpdate:String, amountToChangePerSecond:float):
 	var timer = Timer.new()
-	timer.timeout.connect(UpdateNeed.bind(NeedToUpdate, amountToChangePerSecond * 5))
+	timer.timeout.connect(UpdateNeed.bind(NeedToUpdate, amountToChangePerSecond * SimulantSettings.NEED_UPDATE_RATE))
 	add_child(timer)
-	timer.start(5)
+	timer.start(SimulantSettings.NEED_UPDATE_RATE)
 
 func UpdateNeed(NeedToUpdate:String, amountToChangeBy:float):
 	var need = clampf(get(NeedToUpdate) + amountToChangeBy, SimulantSettings.MIN_NEED, SimulantSettings.MAX_NEED)
 	set(NeedToUpdate, need)
 	NeedUpdated.emit(NeedToUpdate, need)
+
+func GetLowestNeed():
+	var lowestVal = [Hunger, Energy, Fun, Social].min()
+	if lowestVal == Hunger :
+		return SimulantSettings.TYPE_HUNGER
+	elif lowestVal == Energy:
+		return SimulantSettings.TYPE_ENERGY
+	elif lowestVal == Fun:
+		return SimulantSettings.TYPE_FUN
+	elif lowestVal == Social:
+		return SimulantSettings.TYPE_SOCIAL

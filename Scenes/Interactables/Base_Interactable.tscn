@@ -9,3 +9,5 @@
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableMesh/StaticBody3D"]
 
 [node name="InteractionPoints" type="Node3D" parent="."]
+
+[node name="Point1" type="Node3D" parent="InteractionPoints"]

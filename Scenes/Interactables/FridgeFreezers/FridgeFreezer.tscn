@@ -17,5 +17,5 @@ mesh = SubResource("BoxMesh_87eo0")
 [node name="CollisionShape3D" parent="InteractableMesh/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_2e16i")
 
-[node name="InteractionPoints" parent="." index="1"]
+[node name="Point1" parent="InteractionPoints" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)

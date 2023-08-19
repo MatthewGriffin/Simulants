@@ -15,6 +15,7 @@ offset_right = -232.448
 offset_bottom = -118.64
 
 [node name="MainCont" type="VBoxContainer" parent="."]
+layout_mode = 0
 offset_left = -194.0
 offset_top = -118.0
 offset_right = 6.0

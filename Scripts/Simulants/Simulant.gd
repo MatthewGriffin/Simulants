@@ -12,17 +12,22 @@ signal AtTarget
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var GRAVITY = ProjectSettings.get_setting("physics/3d/default_gravity")
 var _SimulantNeeds:SimulantNeeds 
+var _SimulantTaskManager:SimulantTaskManager 
 var Target
 
-func Setup():
+func Setup(gameController:GameController):
 	_SimulantNeeds = SimulantNeeds.new()
-	#SimulantNeeds has to be added to scene tree so that it can create timers 
+	_SimulantTaskManager = SimulantTaskManager.new()
+	#These have to be added to scene tree so that it can create timers 
 	add_child(_SimulantNeeds)
+	add_child(_SimulantTaskManager)
 	_SimulantNeeds.Setup()
+	_SimulantTaskManager.Setup(self, gameController)
 
 func SetTarget(target):
 	NavAgent.target_position = target.global_position
 	Target = target
+	print(Target.global_position)
 
 func _process(delta):
 	# Add the gravity.
@@ -33,7 +38,6 @@ func _process(delta):
 		var nextPoint = NavAgent.get_next_path_position()
 		var dir = global_transform.looking_at(nextPoint).basis
 		var angle = rad_to_deg(Quaternion(dir).angle_to(get_quaternion()))
-		var currentAnim = StateMachine.get_current_node()
 		
 		#if point is infront then walk 
 		if angle <= 45 || angle >= 315:
