@@ -1,0 +1,117 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2ncmqplvi8qo"]
+
+[ext_resource type="LabelSettings" uid="uid://c0x4xnxy0mrup" path="res://GUI/Simulants/Settings/SimulantNeeds_LabelSettings.tres" id="1_5d04l"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e5ffg"]
+bg_color = Color(0.4, 1, 0.368627, 1)
+
+[node name="SimulantNeeds_GUI" type="Control"]
+layout_mode = 3
+anchor_right = 0.174
+anchor_bottom = 0.18
+offset_left = -32.0
+offset_top = -2.0
+offset_right = -232.448
+offset_bottom = -118.64
+
+[node name="MainCont" type="VBoxContainer" parent="."]
+offset_left = -194.0
+offset_top = -118.0
+offset_right = 6.0
+offset_bottom = -2.0
+
+[node name="NeedsCont" type="VBoxContainer" parent="MainCont"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="EnergyCont" type="HBoxContainer" parent="MainCont/NeedsCont"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MainCont/NeedsCont/EnergyCont"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Energy"
+label_settings = ExtResource("1_5d04l")
+
+[node name="EnergyProgressBar" type="ProgressBar" parent="MainCont/NeedsCont/EnergyCont"]
+custom_minimum_size = Vector2(100, 10)
+layout_mode = 2
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_e5ffg")
+step = 0.001
+value = 1.0
+show_percentage = false
+
+[node name="HungerCont" type="HBoxContainer" parent="MainCont/NeedsCont"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MainCont/NeedsCont/HungerCont"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Hunger
+"
+label_settings = ExtResource("1_5d04l")
+
+[node name="HungerProgressBar" type="ProgressBar" parent="MainCont/NeedsCont/HungerCont"]
+custom_minimum_size = Vector2(100, 10)
+layout_mode = 2
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_e5ffg")
+step = 0.001
+value = 1.0
+show_percentage = false
+
+[node name="SocialCont" type="HBoxContainer" parent="MainCont/NeedsCont"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MainCont/NeedsCont/SocialCont"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Social"
+label_settings = ExtResource("1_5d04l")
+
+[node name="SocialProgressBar" type="ProgressBar" parent="MainCont/NeedsCont/SocialCont"]
+custom_minimum_size = Vector2(100, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_e5ffg")
+step = 0.001
+value = 1.0
+show_percentage = false
+
+[node name="FunCont" type="HBoxContainer" parent="MainCont/NeedsCont"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MainCont/NeedsCont/FunCont"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Fun"
+label_settings = ExtResource("1_5d04l")
+
+[node name="FunProgressBar" type="ProgressBar" parent="MainCont/NeedsCont/FunCont"]
+custom_minimum_size = Vector2(100, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_e5ffg")
+step = 0.001
+value = 1.0
+show_percentage = false
+
+[node name="ColorRect" type="ColorRect" parent="."]
+show_behind_parent = true
+layout_mode = 2
+offset_left = -187.0
+offset_top = -116.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.415686, 0.658824, 1, 1)

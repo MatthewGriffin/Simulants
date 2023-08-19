@@ -1,18 +1,26 @@
 extends CharacterBody3D
 
+class_name Simulant
 
-const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var GRAVITY = ProjectSettings.get_setting("physics/3d/default_gravity")
+signal AtTarget
 
 @onready var dummyMesh = $dummy_scene/Armature/Skeleton3D/Cube
 @onready var AnimTree = $dummy_scene/AnimationTree
 @onready var StateMachine =  AnimTree["parameters/playback"]
 @onready var NavAgent = $NavigationAgent3D
+
+# Get the gravity from the project settings to be synced with RigidBody nodes.
+var GRAVITY = ProjectSettings.get_setting("physics/3d/default_gravity")
+var _SimulantNeeds:SimulantNeeds 
 var Target
 
-func Setup(target):
+func Setup():
+	_SimulantNeeds = SimulantNeeds.new()
+	#SimulantNeeds has to be added to scene tree so that it can create timers 
+	add_child(_SimulantNeeds)
+	_SimulantNeeds.Setup()
+
+func SetTarget(target):
 	NavAgent.target_position = target.global_position
 	Target = target
 
@@ -20,10 +28,9 @@ func _process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= GRAVITY * delta
-	
+	#Until target reached
 	if !NavAgent.is_navigation_finished():
 		var nextPoint = NavAgent.get_next_path_position()
-		
 		var dir = global_transform.looking_at(nextPoint).basis
 		var angle = rad_to_deg(Quaternion(dir).angle_to(get_quaternion()))
 		var currentAnim = StateMachine.get_current_node()
@@ -36,8 +43,8 @@ func _process(delta):
 			ApplyRootMotion(delta)
 		#if point is to our side or behind
 		else:
+			#convert nextpoint to be direction from simulant
 			var loc = to_local(nextPoint).normalized()
-			#convert nextpoint to be direction from simulant to figure out if its to its left or right
 			if loc.x > 0 && angle > 270: 
 				StateMachine.travel("Turn_Right_45")
 			elif loc.x > 0:
@@ -50,6 +57,7 @@ func _process(delta):
 			ApplyRootMotion(delta)
 			SetAnimTreeParam("parameters/Walk/blend_position", Vector2(0,0))
 	else:
+		AtTarget.emit()
 		SetAnimTreeParam("parameters/Walk/blend_position", Vector2(0,0))	
 
 func ApplyRootMotion(delta:float):

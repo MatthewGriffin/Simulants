@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://b3octd2d2xbar"]
+
+[node name="Interactable" type="Node3D"]
+
+[node name="InteractableMesh" type="MeshInstance3D" parent="."]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="InteractableMesh"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableMesh/StaticBody3D"]
+
+[node name="InteractionPoints" type="Node3D" parent="."]

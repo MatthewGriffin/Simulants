@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://4v63uxt6tbuu"]
+
+[ext_resource type="Script" path="res://Scripts/GUI/Simulant_GUI.gd" id="1_30cj1"]
+[ext_resource type="PackedScene" uid="uid://d2ncmqplvi8qo" path="res://GUI/Simulants/SimulantNeeds_GUI.tscn" id="1_fy7ff"]
+
+[node name="Simulant_GUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_30cj1")
+
+[node name="GUI_VCont" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="GUI_HCont" type="HBoxContainer" parent="GUI_VCont"]
+layout_mode = 2
+
+[node name="SimulantNeeds_GUI" parent="GUI_VCont/GUI_HCont" instance=ExtResource("1_fy7ff")]
+layout_mode = 2
