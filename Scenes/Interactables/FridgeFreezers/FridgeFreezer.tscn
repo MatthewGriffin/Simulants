@@ -1,14 +1,14 @@
 [gd_scene load_steps=5 format=3 uid="uid://clyrnyi8bfnnm"]
 
 [ext_resource type="PackedScene" uid="uid://b3octd2d2xbar" path="res://Scenes/Interactables/Base_Interactable.tscn" id="1_eocfx"]
-[ext_resource type="Script" path="res://Scripts/Interactables/Fridge/Interactable_FridgeFreezer.gd" id="2_uoeya"]
+[ext_resource type="Script" path="res://Scripts/Interactables/Food/Interactable_FridgeFreezer.gd" id="2_dainm"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_87eo0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2e16i"]
 
 [node name="FridgeFreezer" instance=ExtResource("1_eocfx")]
-script = ExtResource("2_uoeya")
+script = ExtResource("2_dainm")
 
 [node name="InteractableMesh" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)

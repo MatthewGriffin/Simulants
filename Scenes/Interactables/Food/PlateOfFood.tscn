@@ -1,14 +1,14 @@
 [gd_scene load_steps=5 format=3 uid="uid://ykebs5540sc0"]
 
 [ext_resource type="PackedScene" uid="uid://b3octd2d2xbar" path="res://Scenes/Interactables/Base_Interactable.tscn" id="1_0o7eq"]
-[ext_resource type="Script" path="res://Scenes/Interactables/Food/PlateOfFood.gd" id="2_n7q27"]
+[ext_resource type="Script" path="res://Scripts/Interactables/Food/Interactable_PlateOfFood.gd" id="2_86otx"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_utr0q"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ms2lx"]
 
 [node name="PlateOfFood" instance=ExtResource("1_0o7eq")]
-script = ExtResource("2_n7q27")
+script = ExtResource("2_86otx")
 
 [node name="InteractableMesh" parent="." index="0"]
 transform = Transform3D(0.3, 0, 0, 0, 0.01, 0, 0, 0, 0.3, 0, 0, 0)

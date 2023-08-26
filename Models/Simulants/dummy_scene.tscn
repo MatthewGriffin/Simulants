@@ -1,7 +1,14 @@
-[gd_scene load_steps=23 format=3 uid="uid://bhubw1bbqlmcj"]
+[gd_scene load_steps=28 format=3 uid="uid://bhubw1bbqlmcj"]
 
 [ext_resource type="PackedScene" uid="uid://eiomb8w1r08q" path="res://Models/Simulants/dummy.glb" id="1_507xh"]
 [ext_resource type="AnimationLibrary" uid="uid://cd5rhme27pws1" path="res://Animations/Simulants/SimulantAnimLib.res" id="2_tko04"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ri23w"]
+animation = &"SimulantAnimLib/GetInBed"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2kbic"]
+animation = &"SimulantAnimLib/GetInBed"
+play_mode = 1
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vm3p0"]
 animation = &"SimulantAnimLib/Turn_Left"
@@ -69,7 +76,19 @@ xfade_time = 0.5
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_upyi1"]
 xfade_time = 0.5
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jhidd"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_a0vsh"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_neg1v"]
+switch_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_qk64o"]
+states/GetInBed/node = SubResource("AnimationNodeAnimation_ri23w")
+states/GetInBed/position = Vector2(194, 239)
+states/GetOutOfBed/node = SubResource("AnimationNodeAnimation_2kbic")
+states/GetOutOfBed/position = Vector2(131, 155)
 states/Start/position = Vector2(371, 218)
 states/Turn_Left/node = SubResource("AnimationNodeAnimation_vm3p0")
 states/Turn_Left/position = Vector2(224, 95)
@@ -81,21 +100,25 @@ states/Turn_Right_45/node = SubResource("AnimationNodeAnimation_aal45")
 states/Turn_Right_45/position = Vector2(561, 2)
 states/Walk/node = SubResource("AnimationNodeBlendSpace2D_i8ycl")
 states/Walk/position = Vector2(371, 100)
-transitions = ["Turn_Left", "Walk", SubResource("AnimationNodeStateMachineTransition_dbu4l"), "Turn_Right", "Walk", SubResource("AnimationNodeStateMachineTransition_0j2n5"), "Start", "Walk", SubResource("AnimationNodeStateMachineTransition_ja12y"), "Turn_Left_45", "Walk", SubResource("AnimationNodeStateMachineTransition_nvflb"), "Turn_Right_45", "Walk", SubResource("AnimationNodeStateMachineTransition_tkuhi"), "Walk", "Turn_Left_45", SubResource("AnimationNodeStateMachineTransition_sskg4"), "Walk", "Turn_Left", SubResource("AnimationNodeStateMachineTransition_ygioe"), "Walk", "Turn_Right", SubResource("AnimationNodeStateMachineTransition_bfnnb"), "Walk", "Turn_Right_45", SubResource("AnimationNodeStateMachineTransition_upyi1")]
-graph_offset = Vector2(-209, -43)
+transitions = ["Turn_Left", "Walk", SubResource("AnimationNodeStateMachineTransition_dbu4l"), "Turn_Right", "Walk", SubResource("AnimationNodeStateMachineTransition_0j2n5"), "Start", "Walk", SubResource("AnimationNodeStateMachineTransition_ja12y"), "Turn_Left_45", "Walk", SubResource("AnimationNodeStateMachineTransition_nvflb"), "Turn_Right_45", "Walk", SubResource("AnimationNodeStateMachineTransition_tkuhi"), "Walk", "Turn_Left_45", SubResource("AnimationNodeStateMachineTransition_sskg4"), "Walk", "Turn_Left", SubResource("AnimationNodeStateMachineTransition_ygioe"), "Walk", "Turn_Right", SubResource("AnimationNodeStateMachineTransition_bfnnb"), "Walk", "Turn_Right_45", SubResource("AnimationNodeStateMachineTransition_upyi1"), "Walk", "GetInBed", SubResource("AnimationNodeStateMachineTransition_jhidd"), "GetInBed", "GetOutOfBed", SubResource("AnimationNodeStateMachineTransition_a0vsh"), "GetOutOfBed", "Walk", SubResource("AnimationNodeStateMachineTransition_neg1v")]
+graph_offset = Vector2(-304, 53)
 
 [node name="dummy" instance=ExtResource("1_507xh")]
 
+[node name="Armature" parent="." index="0"]
+transform = Transform3D(-1, 0, -3.89414e-07, 0, 1, 0, 3.89414e-07, 0, -1, 0, 0, 0)
+
 [node name="Skeleton3D" parent="Armature" index="0"]
-bones/1/position = Vector3(3.05484e-05, 0.889953, -2.29299e-08)
-bones/2/rotation = Quaternion(-0.116689, -0.074493, -0.984496, 0.107712)
-bones/3/rotation = Quaternion(-0.064157, -0.000925174, -0.00545455, 0.997925)
-bones/6/rotation = Quaternion(-0.173912, -0.02543, 0.976603, 0.123914)
-bones/7/rotation = Quaternion(-0.0656114, 0.000363951, 0.00450853, 0.997835)
-bones/8/rotation = Quaternion(-0.00229615, -0.0776234, 0.996979, -0.00166509)
-bones/9/rotation = Quaternion(0.166193, 0.0105499, -0.0199061, 0.985836)
-bones/10/rotation = Quaternion(0.00126645, 0.0480554, 0.998844, 0.000665547)
-bones/11/rotation = Quaternion(0.0744068, -4.6685e-05, 0.011069, 0.997167)
+bones/0/rotation = Quaternion(0, 0, 0, 1)
+bones/1/position = Vector3(3.05483e-05, 0.891785, -2.29196e-08)
+bones/2/rotation = Quaternion(-0.118254, 0.0267383, -0.98713, 0.104291)
+bones/3/rotation = Quaternion(-0.0645644, -0.000835995, -0.00530744, 0.997899)
+bones/6/rotation = Quaternion(-0.180764, 0.0286699, 0.976857, 0.110697)
+bones/7/rotation = Quaternion(-0.0658427, 0.000307964, 0.00442576, 0.99782)
+bones/8/rotation = Quaternion(-0.00873571, -0.00749641, 0.999913, 0.006429)
+bones/9/rotation = Quaternion(0.292593, 0.0235626, -0.0342598, 0.955333)
+bones/10/rotation = Quaternion(0.00798844, -0.0372186, 0.99922, -0.0105172)
+bones/11/rotation = Quaternion(0.0556645, -0.000953671, 0.0136569, 0.998356)
 
 [node name="AnimationPlayer" parent="." index="1"]
 libraries = {

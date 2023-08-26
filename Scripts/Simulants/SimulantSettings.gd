@@ -1,12 +1,11 @@
 extends Node
-
 class_name SimulantSettings
 
 const MIN_NEED = 0
 const MAX_NEED = 100
 
-const DEFAULT_ENERGY = 100
-const DEFAULT_HUNGER = 75
+const DEFAULT_ENERGY = 75
+const DEFAULT_HUNGER = 100
 const DEFAULT_SOCIAL = 100
 const DEFAULT_FUN = 100
 
